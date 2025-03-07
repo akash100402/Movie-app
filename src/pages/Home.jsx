@@ -17,11 +17,9 @@ function Home() {
   };
   return (
     <div>
-      <div className="bg-blue-950">
+      <div >
         <div className="flex p-4 justify-center  items-center gap-20">
-          <h2 className="font-bold text-white">
-            Movies <span className="text-cyan-300">List</span>
-          </h2>
+          
           <form className="flex" onSubmit={handleSubmit}>
             <input
               type="text"

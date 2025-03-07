@@ -1,13 +1,19 @@
+import Header from "./components/Header"
+import Favorites from "./pages/Favorites"
 import Home from "./pages/Home"
-import MovieCard from "./components/MovieCard"
-
+import { Route, Routes } from "react-router-dom"
 function App() {
   
 
   return (
     <div>
-      <Home/>
-      {/* <MovieCard movie={{title:"Revenant", releaseYear:"2020"}}/> */}
+      <Header/>
+      <main>
+      <Routes>
+        <Route path='/' element={<Home/>} />
+        <Route path='/favorites' element={<Favorites/>} />
+      </Routes>
+    </main>
     </div>
   )
 }
