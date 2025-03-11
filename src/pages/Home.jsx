@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import MovieCard from "../components/MovieCard";
 import moviesData from "../data/movies"; // Corrected import path and renamed to avoid conflict
+import Footer from "../components/Footer";
 
 function Home() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -20,13 +21,13 @@ function Home() {
           <form className="flex" onSubmit={handleSearch}>
             <input
               type="text"
-              className="rounded-l-sm bg-amber-100 p-2 focus:outline-none"
+              className="rounded-l-sm border-1 border-blue-950 bg-cyan-50 p-2 focus:outline-none"
               placeholder="Search movies here..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
             <button
-              className="rounded-r-sm bg-white p-2 border border-amber-100 hover:bg-amber-50 transition-colors"
+              className="rounded-r-sm bg-white p-2 border border-blue-950 hover:bg-blue-950 hover:text-white hover:bg-amber-50 transition-colors"
               type="submit"
             >
               Search
@@ -45,6 +46,7 @@ function Home() {
             <MovieCard movie={movie} key={movie.id} />
           ))}
       </div>
+      <Footer/>
     </div>
   );
 }

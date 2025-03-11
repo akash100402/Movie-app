@@ -14,12 +14,12 @@ function MovieCard({ movie }) {
       <div>
         <img
           src={movie.url}
-          className="h-[260px] w-full object-cover group-hover:h-[200px] transition-all duration-300 z-20"
+          className=" h-[260px] sm:h-[300px] w-full object-cover  transition-all duration-300 z-20"
           alt={movie.title}
         />
         
       </div>
-      <div className="p-3 flex flex-col gap-2">
+      <div className="p-3 flex justify-between px-2 items-center">
         <h2 className="text-lg font-semibold line-clamp-2">{movie.title}</h2>
         <p className="italic text-sm">{movie.releaseYear}</p>
       </div>
