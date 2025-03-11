@@ -46,7 +46,9 @@ function Home() {
             <MovieCard movie={movie} key={movie.id} />
           ))}
       </div>
-      <Footer/>
+      <div className="">
+      <Footer />
+      </div>
     </div>
   );
 }
