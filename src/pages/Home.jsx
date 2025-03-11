@@ -1,49 +1,50 @@
 import React, { useState } from "react";
 import MovieCard from "../components/MovieCard";
+import moviesData from "../data/movies"; // Corrected import path and renamed to avoid conflict
 
 function Home() {
   const [searchQuery, setSearchQuery] = useState("");
+  const [movies, setMovies] = useState(moviesData); // Initialize with imported data
 
-  const movies = [
-    { id: 1, title: "John Wick", releaseYear: "2014" },
-    { id: 2, title: "Avengers", releaseYear: "2012" },
-    { id: 3, title: "Dead Pool", releaseYear: "2009" },
-    { id: 4, title: "Catch Me", releaseYear: "2024" },
-    { id: 5, title: "Last of Us", releaseYear: "2019" },
-  ];
-  const handleSubmit = (e) => {
+  const handleSearch = (e) => {
     e.preventDefault();
-    alert(searchQuery);
+    alert(`Searching for: ${searchQuery}`);
+    setSearchQuery("");
   };
+
   return (
     <div>
-      <div >
-        <div className="flex p-4 justify-center  items-center gap-20">
-          
-          <form className="flex" onSubmit={handleSubmit}>
+      {/* Search Bar */}
+      <div>
+        <div className="flex p-4 justify-center items-center gap-20">
+          <form className="flex" onSubmit={handleSearch}>
             <input
               type="text"
-              className="rounded-l-sm bg-amber-100"
+              className="rounded-l-sm bg-amber-100 p-2 focus:outline-none"
               placeholder="Search movies here..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
-            <button className="rounded-r-sm bg-white" type="submit">
+            <button
+              className="rounded-r-sm bg-white p-2 border border-amber-100 hover:bg-amber-50 transition-colors"
+              type="submit"
+            >
               Search
             </button>
           </form>
         </div>
       </div>
-      <div className="">
-        {movies.map(
-          (movie) =>
-            movie.title.toLowerCase().startsWith(searchQuery) && (
-              <MovieCard movie={movie} key={movie.id} />
-            )
-        )}
-      </div>
 
-      {/* <p className="text-red-500">Hello world</p> */}
+      {/* Movie Cards */}
+      <div className="flex flex-wrap gap-5 mt-5 justify-center">
+        {movies
+          .filter((movie) =>
+            movie.title.toLowerCase().startsWith(searchQuery.toLowerCase())
+          )
+          .map((movie) => (
+            <MovieCard movie={movie} key={movie.id} />
+          ))}
+      </div>
     </div>
   );
 }
